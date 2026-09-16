@@ -15,7 +15,9 @@ workflows:
       - name: Sync Capacitor iOS
         script: |
           npx cap sync ios
-
+      - name: Validate Info.plist
+        script: |
+          plutil -lint ios/App/App/Info.plist
       - name: Build iOS
         script: |
           xcodebuild \
