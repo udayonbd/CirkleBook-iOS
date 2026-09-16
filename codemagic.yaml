@@ -28,3 +28,5 @@ workflows:
             -destination 'generic/platform=iOS Simulator' \
             CODE_SIGNING_ALLOWED=NO \
             build
+    artifacts:
+      - /Users/builder/Library/Developer/Xcode/DerivedData/**/Build/Products/Debug-iphonesimulator/*.app
