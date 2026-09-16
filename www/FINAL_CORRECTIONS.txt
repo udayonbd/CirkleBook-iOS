@@ -1,0 +1,16 @@
+Cirklebook FINAL Correction + Polishing
+
+Key final fixes:
+- Facebook-like desktop/mobile responsive layout retained and polished.
+- Top-right account button opens account menu; Profile opens full profile page.
+- Left-side profile is clickable.
+- Profile photo upload/change/remove works in the UI and synchronizes across top bar, left profile, composer, menu, profile page and current-user feed avatars.
+- Profile photo persists in this browser via localStorage.
+- Cover photo Upload/Remove works and persists in this browser.
+- Professional Dashboard compact navigation preserved.
+- Existing working Friends/Requests/Sent/Add Friend/Follow/Unfriend logic was not replaced.
+- Existing Groups, Pages, Saved, feed/post and backend-supported flows retained.
+- Mobile view polished for profile, dashboard, dialogs and feed.
+
+Important backend boundary:
+Browser persistence is implemented for profile/cover images in this correction package. Permanent cross-device/server media persistence still requires backend media-upload/profile-photo/cover-photo endpoints and storage.

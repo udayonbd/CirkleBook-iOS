@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cirklebook</title>
+  <link rel="icon" type="image/png" href="assets/cirklebook-favicon.png">
+  <link rel="stylesheet" href="styles.css?v=20260914-composer-manual-feed-fix">
+  <link rel="stylesheet" href="final-v8.css?v=20260915-final-v8">
+</head>
+<body>
+
+<section id="loginScreen" class="login-screen">
+  <div class="login-shell">
+    <div class="login-visual" aria-label="Cirklebook community"></div>
+    <form id="loginForm" class="login-card">
+      <h2>Log in to Cirklebook</h2>
+      <input id="loginIdentifier" type="text" placeholder="Email, phone or username" autocomplete="username" required>
+      <input id="loginPassword" type="password" placeholder="Password" autocomplete="current-password" required>
+      <div id="loginMessage" class="message hidden"></div>
+      <button id="loginButton" type="submit" class="primary-button">Log In</button>
+      <button id="forgotPasswordButton" type="button" class="text-link-button">Forgotten password?</button>
+      <div class="login-divider"></div>
+      <button id="createAccountButton" type="button" class="outline-primary-button">Create new account</button>
+    </form>
+  </div>
+</section>
+
+<div id="mainApp" class="app hidden">
+  <header class="topbar">
+    <div class="top-left">
+      <button class="brand-cover-button" id="brandHomeButton" type="button" title="Cirklebook Home">
+        <img src="assets/logo-main.png" class="top-main-logo" alt="Cirklebook">
+      </button>
+      <div class="top-search-wrap">
+        <span class="top-search-symbol">⌕</span>
+        <input id="topSearch" class="search-input" type="search" placeholder="Search Cirklebook" autocomplete="off">
+      </div>
+    </div>
+
+    <nav class="top-nav" aria-label="Primary navigation">
+      <button id="topHomeBtn" type="button" class="nav-button active" title="Home"><img src="assets/icon-home.png" alt="Home"></button>
+      <button id="topVideoBtn" type="button" class="nav-button" title="Video"><img src="assets/icon-video.png" alt="Video"></button>
+      <button id="topDashboardBtn" type="button" class="nav-button" title="Professional Dashboard"><img src="assets/icon-dashboard.png" alt="Professional Dashboard"></button>
+      <button id="topGroupsBtn" type="button" class="nav-button" title="Groups"><img src="assets/icon-groups.png" alt="Groups"></button>
+      <button id="topPagesBtn" type="button" class="nav-button" title="Pages"><img src="assets/icon-pages.png" alt="Pages"></button>
+    </nav>
+
+    <div class="top-right">
+      <button id="languageButton" type="button" class="round-image-button" title="Language"><img src="assets/icon-language.png" alt="Language"></button>
+      <button id="topCreateBtn" type="button" class="round-button" title="Create post">+</button>
+      <button id="topMessagesBtn" type="button" class="round-image-button" title="Messages"><img src="assets/icon-messages.png" alt="Messages"></button>
+      <button id="topNotificationsBtn" type="button" class="round-image-button" title="Notifications"><img src="assets/icon-notifications.png" alt="Notifications"></button>
+      <button id="profileButton" type="button" class="profile-button">
+        <span id="topAvatar" class="avatar">U</span>
+        <span id="topUsername">User</span><span>▾</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="layout" id="homeLayout">
+    <aside class="left-sidebar">
+      <div class="sidebar-profile"><span id="sidebarAvatar" class="avatar">U</span><strong id="sidebarUsername">User</strong></div>
+      <button class="sidebar-link"><img src="assets/icon-friends.png" alt=""> <span>Friends</span></button>
+      <button class="sidebar-link"><img src="assets/icon-groups.png" alt=""> <span>Groups</span></button>
+      <button class="sidebar-link"><img src="assets/icon-pages.png" alt=""> <span>Pages</span></button>
+      <button class="sidebar-link"><img src="assets/icon-saved.png" alt=""> <span>Saved</span></button>
+      <button class="sidebar-link"><img src="assets/icon-notifications.png" alt=""> <span>Notifications</span></button>
+      <button class="sidebar-link"><img src="assets/icon-dashboard.png" alt=""> <span>Professional Dashboard</span></button>
+      <button class="sidebar-link"><img src="assets/icon-settings.png" alt=""> <span>Settings & Privacy</span></button>
+      <button class="sidebar-link"><span class="sidebar-text-icon">📣</span><span>Ads Center</span></button>
+      <button class="sidebar-link"><span class="sidebar-text-icon">🛡️</span><span>Community Standards</span></button>
+      <div class="sidebar-footer">Privacy · Terms · Community Standards<br>Cirklebook © 2026</div>
+    </aside>
+
+    <main class="feed-column">
+      <section class="card composer modern-composer">
+        <span id="composerAvatar" class="avatar">U</span>
+        <button id="openComposerButton" type="button" class="composer-input">What's on your mind?</button>
+        <div class="composer-inline-actions">
+          <button id="liveButton" type="button" class="composer-icon-button" title="Live video"><img src="assets/icon-live.png" alt="Live video"></button>
+          <button id="photoVideoButton" type="button" class="composer-icon-button" title="Photo / Video"><img src="assets/icon-photo-video.png" alt="Photo / Video"></button>
+          <button id="feelingButton" type="button" class="composer-icon-button" title="Feeling / Activity"><img src="assets/icon-feeling.png" alt="Feeling / Activity"></button>
+        </div>
+      </section>
+      <div id="feedMessage" class="card status-card">Loading feed...</div>
+      <div id="feedContainer"></div>
+    </main>
+
+    <aside class="right-sidebar">
+      <div class="sponsored-head"><h3>Sponsored</h3><button id="sponsoredManageBtn" class="sponsored-manage hidden" type="button">Manage Ads</button></div>
+      <div class="ad-stack">
+        <div class="ad-box"><strong>Ad space</strong></div>
+        <div class="ad-box"><strong>Ad space</strong></div>
+        <div class="ad-box"><strong>Ad space</strong></div>
+        <div class="ad-box"><strong>Ad space</strong></div>
+      </div>
+    </aside>
+  </div>
+
+  <section id="featureView" class="feature-view hidden"></section>
+</div>
+
+<!-- Create Post -->
+<div id="postModal" class="modal hidden">
+  <div class="modal-card create-post-card">
+    <div class="modal-header"><h2>Create Post</h2><button id="closeModalButton" type="button" class="close-button">×</button></div>
+    <div class="modal-body">
+      <div class="modal-user">
+        <span id="modalAvatar" class="avatar">U</span>
+        <div><strong id="modalUsername">User</strong><select id="postVisibility"><option value="public">Public</option><option value="friends">Friends</option><option value="only_me">Only Me</option></select></div>
+      </div>
+      <div class="policy-notice">
+        <span class="policy-en">The following are strictly prohibited: ❌ Pornography ❌ Obscene content ❌ Promotion of drugs, alcohol &amp; gambling.</span>
+        <span class="policy-bn" lang="bn">নিম্নলিখিত বিষয়গুলো কঠোরভাবে নিষিদ্ধ: ❌ পর্নোগ্রাফি ❌ অশ্লীল বিষয়বস্তু ❌ মাদক, অ্যালকোহল ও জুয়ার প্রচার।</span>
+      </div>
+      <div class="post-text-stage" id="postTextStage">
+        <textarea id="postBody" placeholder="What's on your mind?"></textarea>
+        <button id="postBackgroundButton" class="post-text-tool post-bg-tool" type="button" title="Background color">Aa</button>
+        <button id="postEmojiButton" class="post-text-tool post-emoji-tool" type="button" title="Emoji">☺</button>
+        <div id="postBackgroundPalette" class="post-background-palette hidden" aria-label="Post background colors"></div>
+        <div id="postEmojiPalette" class="post-emoji-palette hidden" aria-label="Emoji picker"></div>
+      </div>
+      <div id="postContextChips" class="context-chips"></div>
+      <input id="mediaInput" type="file" accept="image/*,video/*" multiple hidden>
+      <div id="previewBox" class="preview-box hidden"><div id="mediaPreviewGrid" class="media-preview-grid"></div></div>
+      <div class="add-to-post-panel">
+        <strong>Add to your post</strong>
+        <div class="add-to-post-actions">
+          <button id="modalMediaButton" type="button" title="Photo / Video"><img src="assets/icon-photo-video.png" alt=""></button>
+          <button id="tagPeopleButton" type="button" title="Tag people"><img src="assets/icon-friends.png" alt=""></button>
+          <button id="modalFeelingButton" type="button" title="Feeling / Activity"><img src="assets/icon-feeling.png" alt=""></button>
+          <button id="checkInButton" type="button" title="Check in">📍</button>
+          <button id="modalLiveButton" type="button" title="Live video"><img src="assets/icon-live.png" alt=""></button>
+          <button id="morePostOptionsButton" type="button" title="More">•••</button>
+        </div>
+      </div>
+      <div id="postMessage" class="message hidden"></div>
+      <div class="create-post-footer"><button id="publishButton" type="button" class="primary-button">Post</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- Account Menu -->
+<div id="accountMenu" class="account-menu hidden">
+  <div class="account-user"><span id="menuAvatar" class="avatar">U</span><strong id="menuUsername">User</strong></div><hr>
+  <button type="button" data-cb-action="profile">Profile</button>
+  <button type="button" data-cb-action="settings">Settings & Privacy</button>
+  <button type="button" data-cb-action="language">Language</button>
+  <button type="button" data-cb-action="help">Help & Support</button>
+  <button id="logoutButton" type="button">Log Out</button>
+</div>
+
+<!-- Generic Dialog -->
+<div id="cbDialog" class="modal hidden"><div class="modal-card cb-dialog-card"><div class="modal-header"><h2 id="cbDialogTitle">Cirklebook</h2><button id="cbDialogClose" type="button" class="close-button">×</button></div><div id="cbDialogBody" class="modal-body"></div></div></div>
+
+<div id="toast" class="toast hidden"></div>
+<script src="app.js?v=20260914-composer-manual-feed-fix"></script>
+<script src="people-search.js?v=FINAL-V9-20260915"></script>
+<script src="friend-notification-brand-fix.js?v=20260914-notification-fix"></script>
+
+<script>
+/* CIRKLEBOOK AUTH BUTTON FIX — independent of app.js */
+(function () {
+  'use strict';
+
+  const API = '/api/v1';
+  const byId = (id) => document.getElementById(id);
+
+  function closeAuthDialog() {
+    const dialog = byId('cbDialog');
+    if (!dialog) return;
+    dialog.classList.add('hidden');
+    dialog.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  function showAuthDialog(title, bodyHtml) {
+    const dialog = byId('cbDialog');
+    const titleNode = byId('cbDialogTitle');
+    const bodyNode = byId('cbDialogBody');
+    if (!dialog || !titleNode || !bodyNode) {
+      alert('Cirklebook dialog could not be opened.');
+      return;
+    }
+    titleNode.textContent = title;
+    bodyNode.innerHTML = bodyHtml;
+    dialog.classList.remove('hidden');
+    dialog.style.display = 'flex';
+    dialog.style.zIndex = '999999';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function errorText(data, status, fallback) {
+    return data?.error?.message || data?.message || fallback || `Request failed (${status})`;
+  }
+
+  function bindAuthButtons() {
+    const forgot = byId('forgotPasswordButton');
+    const create = byId('createAccountButton');
+    const close = byId('cbDialogClose');
+    const dialog = byId('cbDialog');
+
+    if (close) close.onclick = closeAuthDialog;
+    if (dialog) {
+      dialog.addEventListener('click', function (e) {
+        if (e.target === dialog) closeAuthDialog();
+      });
+    }
+
+    if (forgot) {
+      forgot.onclick = function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
+        showAuthDialog('Find your account', `
+          <form id="cbFixedForgotForm" class="cb-form-grid">
+            <h3>Forgotten password?</h3>
+            <p>Enter the email, phone number or username connected to your Cirklebook account.</p>
+            <input id="cbFixedForgotIdentifier" required placeholder="Email, phone or username">
+            <div id="cbFixedForgotMsg" class="message hidden"></div>
+            <div class="cb-form-actions">
+              <button id="cbFixedForgotCancel" type="button" class="cb-action">Cancel</button>
+              <button type="submit" class="primary-button">Search</button>
+            </div>
+          </form>
+        `);
+
+        byId('cbFixedForgotCancel').onclick = closeAuthDialog;
+        byId('cbFixedForgotForm').onsubmit = async function (ev) {
+          ev.preventDefault();
+          const msg = byId('cbFixedForgotMsg');
+          const identifier = byId('cbFixedForgotIdentifier').value.trim();
+          try {
+            const r = await fetch(`${API}/auth/forgot-password`, {
+              method: 'POST',
+              headers: {'Content-Type':'application/json'},
+              body: JSON.stringify({identifier})
+            });
+            const d = await r.json().catch(() => ({}));
+            if (!r.ok) throw new Error(errorText(d, r.status, 'Unable to start account recovery.'));
+            msg.textContent = d?.message || 'Recovery request accepted.';
+            msg.classList.remove('hidden');
+          } catch (err) {
+            msg.textContent = err.message;
+            msg.classList.remove('hidden');
+          }
+        };
+      };
+    }
+
+    if (create) {
+      create.onclick = function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
+        showAuthDialog('Create a new account', `
+          <form id="cbFixedRegisterForm" class="cb-form-grid">
+            <h3>Create a new account</h3>
+            <div class="auth-name-grid">
+              <input id="cbRegFirstName" required placeholder="First name">
+              <input id="cbRegSurname" required placeholder="Surname">
+            </div>
+            <input id="cbRegUsername" required placeholder="Username">
+            <input id="cbRegEmailPhone" required placeholder="Mobile number or email">
+            <label>Date of birth</label>
+            <input id="cbRegDob" type="date">
+            <label>Gender</label>
+            <select id="cbRegGender">
+              <option value="">Select</option>
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
+              <option value="Custom">Custom</option>
+            </select>
+            <input id="cbRegPassword" type="password" required minlength="8" placeholder="New password">
+            <div id="cbRegMsg" class="message hidden"></div>
+            <button type="submit" class="primary-button">Sign Up</button>
+          </form>
+        `);
+
+        byId('cbFixedRegisterForm').onsubmit = async function (ev) {
+          ev.preventDefault();
+          const msg = byId('cbRegMsg');
+          const contact = byId('cbRegEmailPhone').value.trim();
+          const payload = {
+            displayName: `${byId('cbRegFirstName').value.trim()} ${byId('cbRegSurname').value.trim()}`.trim(),
+            username: byId('cbRegUsername').value.trim(),
+            password: byId('cbRegPassword').value
+          };
+          const dob = byId('cbRegDob').value;
+          const gender = byId('cbRegGender').value;
+          if (dob) payload.dateOfBirth = dob;
+          if (gender) payload.gender = gender;
+          if (contact.includes('@')) payload.email = contact;
+          else payload.phone = contact;
+
+          try {
+            const r = await fetch(`${API}/auth/register`, {
+              method: 'POST',
+              headers: {'Content-Type':'application/json'},
+              body: JSON.stringify(payload)
+            });
+            const d = await r.json().catch(() => ({}));
+            if (!r.ok) throw new Error(errorText(d, r.status, `Registration failed (${r.status})`));
+            const loginIdentifier = byId('loginIdentifier');
+            if (loginIdentifier) loginIdentifier.value = payload.username;
+            closeAuthDialog();
+            const loginMessage = byId('loginMessage');
+            if (loginMessage) {
+              loginMessage.textContent = 'Account created. Please log in.';
+              loginMessage.classList.remove('hidden');
+            }
+          } catch (err) {
+            msg.textContent = err.message;
+            msg.classList.remove('hidden');
+          }
+        };
+      };
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindAuthButtons);
+  } else {
+    bindAuthButtons();
+  }
+})();
+</script>
+
+<script src="mobile-core-v7.js?v=FINAL-V9-20260915"></script>
+</body>
+</html>

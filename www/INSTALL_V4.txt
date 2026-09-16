@@ -1,0 +1,10 @@
+CIRKLEBOOK V4 INSTALL
+
+1. Open this extracted folder.
+2. Copy EVERYTHING inside it.
+3. Paste into: C:\CirkleBook\frontend\
+4. Choose: Replace the files in the destination.
+5. In Chrome open http://localhost:5500
+6. Press Ctrl + F5.
+
+Do not copy the outer folder itself into frontend. Copy the files and assets folder INSIDE this folder.

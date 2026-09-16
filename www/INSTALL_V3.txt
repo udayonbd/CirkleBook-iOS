@@ -1,0 +1,14 @@
+CIRKLEBOOK CONSOLIDATED V3
+
+Install:
+1. Extract the ZIP.
+2. Open the inner Cirklebook_consolidated_v3 folder.
+3. Copy ALL files and the assets folder.
+4. Paste into C:\CirkleBook\frontend
+5. Choose “Replace the files in the destination”.
+6. In Chrome open http://localhost:5500 and press Ctrl+Shift+R once.
+
+Important:
+- Do not delete your backend or database.
+- This package preserves the existing frontend API base and legacy backend integrations.
+- Read IMPLEMENTATION_STATUS_V3.md for the exact backend-dependent features that still require server support.

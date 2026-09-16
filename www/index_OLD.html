@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cirklebook</title>
+  <link rel="icon" type="image/png" href="assets/cirklebook-favicon.png">
+  <link rel="stylesheet" href="styles.css?v=9-click-handler-fix">
+</head>
+<body>
+
+<section id="loginScreen" class="login-screen">
+  <div class="login-shell">
+    <div class="login-visual" aria-label="Cirklebook community"></div>
+    <form id="loginForm" class="login-card">
+      <h2>Log in to Cirklebook</h2>
+      <input id="loginIdentifier" type="text" placeholder="Email, phone or username" autocomplete="username" required>
+      <input id="loginPassword" type="password" placeholder="Password" autocomplete="current-password" required>
+      <div id="loginMessage" class="message hidden"></div>
+      <button id="loginButton" type="submit" class="primary-button">Log In</button>
+      <button id="forgotPasswordButton" type="button" class="text-link-button">Forgotten password?</button>
+      <div class="login-divider"></div>
+      <button id="createAccountButton" type="button" class="outline-primary-button">Create new account</button>
+    </form>
+  </div>
+</section>
+
+<div id="mainApp" class="app hidden">
+  <header class="topbar">
+    <div class="top-left">
+      <button class="brand-cover-button" id="brandHomeButton" type="button" title="Cirklebook Home">
+        <img src="assets/logo-main.png" class="top-main-logo" alt="Cirklebook">
+      </button>
+      <div class="top-search-wrap">
+        <span class="top-search-symbol">⌕</span>
+        <input id="topSearch" class="search-input" type="search" placeholder="Search Cirklebook" autocomplete="off">
+      </div>
+    </div>
+
+    <nav class="top-nav" aria-label="Primary navigation">
+      <button id="topHomeBtn" type="button" class="nav-button active" title="Home"><img src="assets/icon-home.png" alt="Home"></button>
+      <button id="topVideoBtn" type="button" class="nav-button" title="Video"><img src="assets/icon-video.png" alt="Video"></button>
+      <button id="topDashboardBtn" type="button" class="nav-button" title="Professional Dashboard"><img src="assets/icon-dashboard.png" alt="Professional Dashboard"></button>
+      <button id="topGroupsBtn" type="button" class="nav-button" title="Groups"><img src="assets/icon-groups.png" alt="Groups"></button>
+      <button id="topPagesBtn" type="button" class="nav-button" title="Pages"><img src="assets/icon-pages.png" alt="Pages"></button>
+    </nav>
+
+    <div class="top-right">
+      <button id="languageButton" type="button" class="round-image-button" title="Language"><img src="assets/icon-language.png" alt="Language"></button>
+      <button id="topCreateBtn" type="button" class="round-button" title="Create post">+</button>
+      <button id="topMessagesBtn" type="button" class="round-image-button" title="Messages"><img src="assets/icon-messages.png" alt="Messages"></button>
+      <button id="topNotificationsBtn" type="button" class="round-image-button" title="Notifications"><img src="assets/icon-notifications.png" alt="Notifications"></button>
+      <button id="profileButton" type="button" class="profile-button">
+        <span id="topAvatar" class="avatar">U</span>
+        <span id="topUsername">User</span><span>▾</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="layout" id="homeLayout">
+    <aside class="left-sidebar">
+      <div class="sidebar-profile"><span id="sidebarAvatar" class="avatar">U</span><strong id="sidebarUsername">User</strong></div>
+      <button class="sidebar-link"><img src="assets/icon-friends.png" alt=""> <span>Friends</span></button>
+      <button class="sidebar-link"><img src="assets/icon-groups.png" alt=""> <span>Groups</span></button>
+      <button class="sidebar-link"><img src="assets/icon-pages.png" alt=""> <span>Pages</span></button>
+      <button class="sidebar-link"><img src="assets/icon-saved.png" alt=""> <span>Saved</span></button>
+      <button class="sidebar-link"><img src="assets/icon-notifications.png" alt=""> <span>Notifications</span></button>
+      <button class="sidebar-link"><img src="assets/icon-dashboard.png" alt=""> <span>Professional Dashboard</span></button>
+      <button class="sidebar-link"><img src="assets/icon-settings.png" alt=""> <span>Settings & Privacy</span></button>
+      <button class="sidebar-link"><span class="sidebar-text-icon">📣</span><span>Ads Center</span></button>
+      <button class="sidebar-link"><span class="sidebar-text-icon">🛡️</span><span>Community Standards</span></button>
+      <div class="sidebar-footer">Privacy · Terms · Community Standards<br>Cirklebook © 2026</div>
+    </aside>
+
+    <main class="feed-column">
+      <section class="card composer modern-composer">
+        <span id="composerAvatar" class="avatar">U</span>
+        <button id="openComposerButton" type="button" class="composer-input">What's on your mind?</button>
+        <div class="composer-inline-actions">
+          <button id="liveButton" type="button" class="composer-icon-button" title="Live video"><img src="assets/icon-live.png" alt="Live video"></button>
+          <button id="photoVideoButton" type="button" class="composer-icon-button" title="Photo / Video"><img src="assets/icon-photo-video.png" alt="Photo / Video"></button>
+          <button id="feelingButton" type="button" class="composer-icon-button" title="Feeling / Activity"><img src="assets/icon-feeling.png" alt="Feeling / Activity"></button>
+        </div>
+      </section>
+      <div id="feedMessage" class="card status-card">Loading feed...</div>
+      <div id="feedContainer"></div>
+    </main>
+
+    <aside class="right-sidebar">
+      <div class="sponsored-head"><h3>Sponsored</h3><button id="sponsoredManageBtn" class="sponsored-manage hidden" type="button">Manage Ads</button></div>
+      <div class="ad-stack">
+        <div class="ad-box"><strong>Ad space</strong></div>
+        <div class="ad-box"><strong>Ad space</strong></div>
+        <div class="ad-box"><strong>Ad space</strong></div>
+        <div class="ad-box"><strong>Ad space</strong></div>
+      </div>
+    </aside>
+  </div>
+
+  <section id="featureView" class="feature-view hidden"></section>
+</div>
+
+<!-- Create Post -->
+<div id="postModal" class="modal hidden">
+  <div class="modal-card create-post-card">
+    <div class="modal-header"><h2>Create Post</h2><button id="closeModalButton" type="button" class="close-button">×</button></div>
+    <div class="modal-body">
+      <div class="modal-user">
+        <span id="modalAvatar" class="avatar">U</span>
+        <div><strong id="modalUsername">User</strong><select id="postVisibility"><option value="public">Public</option><option value="friends">Friends</option><option value="only_me">Only Me</option></select></div>
+      </div>
+      <div class="policy-notice">
+        <span class="policy-en">The following are strictly prohibited: ❌ Pornography ❌ Obscene content ❌ Promotion of drugs, alcohol &amp; gambling.</span>
+        <span class="policy-bn" lang="bn">নিম্নলিখিত বিষয়গুলো কঠোরভাবে নিষিদ্ধ: ❌ পর্নোগ্রাফি ❌ অশ্লীল বিষয়বস্তু ❌ মাদক, অ্যালকোহল ও জুয়ার প্রচার।</span>
+      </div>
+      <div class="post-text-stage" id="postTextStage">
+        <textarea id="postBody" placeholder="What's on your mind?"></textarea>
+        <button id="postBackgroundButton" class="post-text-tool post-bg-tool" type="button" title="Background color">Aa</button>
+        <button id="postEmojiButton" class="post-text-tool post-emoji-tool" type="button" title="Emoji">☺</button>
+        <div id="postBackgroundPalette" class="post-background-palette hidden" aria-label="Post background colors"></div>
+        <div id="postEmojiPalette" class="post-emoji-palette hidden" aria-label="Emoji picker"></div>
+      </div>
+      <div id="postContextChips" class="context-chips"></div>
+      <input id="mediaInput" type="file" accept="image/*,video/*" multiple hidden>
+      <div id="previewBox" class="preview-box hidden"><div id="mediaPreviewGrid" class="media-preview-grid"></div></div>
+      <div class="add-to-post-panel">
+        <strong>Add to your post</strong>
+        <div class="add-to-post-actions">
+          <button id="modalMediaButton" type="button" title="Photo / Video"><img src="assets/icon-photo-video.png" alt=""></button>
+          <button id="tagPeopleButton" type="button" title="Tag people"><img src="assets/icon-friends.png" alt=""></button>
+          <button id="modalFeelingButton" type="button" title="Feeling / Activity"><img src="assets/icon-feeling.png" alt=""></button>
+          <button id="checkInButton" type="button" title="Check in">📍</button>
+          <button id="modalLiveButton" type="button" title="Live video"><img src="assets/icon-live.png" alt=""></button>
+          <button id="morePostOptionsButton" type="button" title="More">•••</button>
+        </div>
+      </div>
+      <div id="postMessage" class="message hidden"></div>
+      <div class="create-post-footer"><button id="publishButton" type="button" class="primary-button">Post</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- Account Menu -->
+<div id="accountMenu" class="account-menu hidden">
+  <div class="account-user"><span id="menuAvatar" class="avatar">U</span><strong id="menuUsername">User</strong></div><hr>
+  <button type="button" data-cb-action="profile">Profile</button>
+  <button type="button" data-cb-action="settings">Settings & Privacy</button>
+  <button type="button" data-cb-action="language">Language</button>
+  <button type="button" data-cb-action="help">Help & Support</button>
+  <button id="logoutButton" type="button">Log Out</button>
+</div>
+
+<!-- Generic Dialog -->
+<div id="cbDialog" class="modal hidden"><div class="modal-card cb-dialog-card"><div class="modal-header"><h2 id="cbDialogTitle">Cirklebook</h2><button id="cbDialogClose" type="button" class="close-button">×</button></div><div id="cbDialogBody" class="modal-body"></div></div></div>
+
+<div id="toast" class="toast hidden"></div>
+<script src="app.js?v=9-click-handler-fix"></script>
+</body>
+</html>

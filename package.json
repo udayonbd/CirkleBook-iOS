@@ -1,0 +1,27 @@
+{
+  "name": "cirklebook-mobile",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cirklebook Android and iOS mobile application shell using Capacitor",
+  "scripts": {
+    "sync": "cap sync",
+    "android": "cap open android",
+    "ios": "cap open ios",
+    "build:web": "node scripts/verify-web-copy.js"
+  },
+  "dependencies": {
+    "@capacitor/android": "latest",
+    "@capacitor/app": "latest",
+    "@capacitor/camera": "latest",
+    "@capacitor/core": "latest",
+    "@capacitor/filesystem": "latest",
+    "@capacitor/ios": "latest",
+    "@capacitor/network": "latest",
+    "@capacitor/push-notifications": "latest",
+    "@capacitor/share": "latest"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "latest",
+    "typescript": "^7.0.2"
+  }
+}

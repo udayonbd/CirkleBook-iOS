@@ -1,0 +1,16 @@
+Cirklebook consolidated correction pass v2
+
+Corrected together:
+- Top-right profile button now opens the account dropdown instead of jumping directly to Profile.
+- Account dropdown includes Profile, Settings & Privacy, Language, Help & Support, and Log Out.
+- Existing backend logout button/function remains in place.
+- Professional Dashboard and Settings use a compact left sidebar and a large right detail panel.
+- Dashboard no longer collapses into an oversized horizontal/overlay menu on common Windows scaled displays.
+- Create Post policy heading duplicate removed.
+- English policy warning retained and Bangla warning added directly underneath.
+- Top cover logo visual size improved by trimming only transparent padding from the supplied artwork.
+- Four advertisement boxes compacted so all are easier to see.
+- Custom icons retained and normalized for cleaner sizing.
+- CSS/JS cache-busted with ?v=2.
+
+Backend-dependent services are still backend-dependent; no fake claim of completed server functionality is made.

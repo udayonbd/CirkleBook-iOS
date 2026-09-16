@@ -1,0 +1,15 @@
+Cirklebook — Final corrections after Consolidated V4
+
+Applied:
+1. Preserved Consolidated V4 as the base.
+2. Left-side profile remains routed to the full Profile page.
+3. Profile/cover photo correction code from V4 final corrected build preserved.
+4. Profile image synchronization across Home/top/sidebar/composer/feed preserved.
+5. Create Post policy duplicate heading removal preserved.
+6. Create Post constrained to viewport with scrollable body so header and Post button remain reachable.
+7. Added Facebook-style AI Scan label beside audience selector.
+8. Right-side Sponsored placeholders now display only “Ad space”.
+9. Removed “Advertisement” and “Contact the authorities.” from placeholder boxes.
+
+Important backend note:
+The requested automatic AI decision pipeline (Post -> AI Scan -> Policy/Risk Check -> Approve/Reject/Moderator Review) requires a real moderation backend/model endpoint. The frontend label is ready, but it does not pretend to perform a real AI safety decision by itself.

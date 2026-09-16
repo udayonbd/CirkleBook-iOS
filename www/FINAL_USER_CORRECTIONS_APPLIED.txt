@@ -1,0 +1,16 @@
+Cirklebook V4 Final Corrected
+
+Base: Cirklebook Consolidated V4 Final uploaded by user.
+Applied confirmed corrections without reverting to the old core version:
+- Left sidebar profile opens the full profile page.
+- Account-menu Profile opens the same full profile page.
+- Legacy duplicate/quick profile routing removed.
+- Cover photo upload/remove works with local persistence.
+- Profile picture upload/remove works and synchronizes Home top/left/composer/menu/current-user posts.
+- V4 polish code moved into the correct scope so Messenger/Reels/Live/Settings polish actually executes.
+- Notification internal keys are humanized.
+- Create Post policy correction retained.
+- Responsive mobile polish retained and strengthened.
+- Existing V4 Friends/Groups/Pages/Saved/Dashboard/API integrations preserved.
+
+Note: cross-device/server persistence for profile/cover media still needs a backend media endpoint.

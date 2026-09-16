@@ -1,0 +1,26 @@
+
+/* CirkleBook FINAL v8 login artwork */
+@media(max-width:980px){
+  .login-visual{
+    min-height:250px!important;
+    height:250px!important;
+    margin:0!important;
+    background:
+      radial-gradient(circle at 12% 18%,rgba(41,121,255,.34),transparent 32%),
+      radial-gradient(circle at 88% 20%,rgba(0,220,130,.28),transparent 28%),
+      radial-gradient(circle at 80% 86%,rgba(255,179,0,.30),transparent 30%),
+      linear-gradient(135deg,#eef7ff,#f7fff3 55%,#fff6df)!important;
+    position:relative!important;
+  }
+  .login-visual::after{
+    content:"";
+    position:absolute;
+    inset:12px 18px;
+    background:url("assets/login-background.png") center/contain no-repeat;
+    border-radius:18px;
+  }
+}
+@media(max-width:680px){
+  .login-visual{min-height:210px!important;height:210px!important}
+  .login-visual::after{inset:10px 14px}
+}
